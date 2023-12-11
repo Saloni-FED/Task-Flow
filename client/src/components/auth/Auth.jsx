@@ -6,13 +6,13 @@ const Auth = () => {
       <div className="border w-fit  p-10 mt-10 bg-custom_white rounded shadow-xl">
         <h1 className="text-center text-3xl text-d_green">Sign in </h1>
         <form action="" className="flex flex-col gap-5 mt-6 w-full items-center justify-center">
-          <input type="text" className="w-full p-3 rounded outline-none" placeholder="full name" />{" "}
-          <input type="email" className="w-full p-3 rounded outline-none" placeholder="email" />{" "}
-          <input type="password" className="w-full p-3 rounded outline-none" placeholder="password" />{" "}
-          <button className="border border-l_green w-72 px-2 py-1">Submit</button>
+          <input type="text" className="input" placeholder="full name" />{" "}
+          <input type="email" className="input" placeholder="email" />{" "}
+          <input type="password" className="input" placeholder="password" />{" "}
+          <button className="border border-l_green w-72 px-2 py-1 text-bold text-2xl mt-5 rounded">Submit</button>
         </form>
       </div>
-      <h2 className="mt-5 ">Do you have an account?<span className="text-d_green ml-2">Sign in</span></h2>
+      <h2 className="mt-5 ">Do you have an account?<span className="text-d_green ml-2 underline">Sign in</span></h2>
     </div>
   );
 };

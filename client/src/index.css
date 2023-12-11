@@ -8,4 +8,7 @@
   .buttons {
     @apply border px-4 py-1 text-lg text-l_green border-d_green cursor-pointer;
   }
+  .input {
+    @apply w-full p-3 rounded outline-l_green
+  }
 }
