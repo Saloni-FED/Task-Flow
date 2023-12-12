@@ -1,25 +1,34 @@
 import express from "express";
 import dotenv from "dotenv";
 import connect from "./db/connect.js";
+import Routes from "./routes/users.js"
+
 dotenv.config();
 
-// console.log(process.env.MONGODB_URI)
-
 const app = express();
+
+app.use(express.json())
+
 
 app.get("/", (req, res) => {
   res.send("Server is started");
 });
 
+// Routes 
+app.use("/api/v1",Routes)
+
+// Small Mistake dont use semilcolon while creating an environment variablw
+const port = process.env.PORT || 3000;
+
 const start = async () => {
   try {
     await connect(process.env.MONGODB_URI);
-    app.listen(3000, () => {
-      console.log("app is listening at post 3000");
+    app.listen(port, () => {
+      console.log("app is listening at port " + port);
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
-start()
+start();
