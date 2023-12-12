@@ -1,4 +1,5 @@
 import React from "react";
+import { signIn, signUp } from "../../api";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 const Auth = () => {
@@ -14,9 +15,23 @@ const Auth = () => {
     setIsSignup((prevState) => !prevState);
   };
 
-  const onSubmit = (formData) => {
+  const onSubmit = async(formData) => {
     console.log("form submited");
     console.log(formData);
+    try {
+      if(isSignUp){
+        const data = await signIn(formData)
+        console.log(data)
+      }
+      else{
+        const data = await signUp(formData)
+        console.log(data)
+      }
+    } catch (error) {
+      console.log(error)
+    } 
+
+    
   };
   return (
     <div className=" flex flex-col items-center max-sm:mt-56">

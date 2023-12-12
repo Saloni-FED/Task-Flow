@@ -2,10 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import connect from "./db/connect.js";
 import Routes from "./routes/users.js"
+import cors from "cors"
 
 dotenv.config();
 
 const app = express();
+// Enable cors 
+app.use(cors())
 
 app.use(express.json())
 
