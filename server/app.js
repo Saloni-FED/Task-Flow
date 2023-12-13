@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import connect from "./db/connect.js";
-import Routes from "./routes/users.js"
+import UsersRoutes from "./routes/users.js"
+import TaskRoutes from "./routes/task.js"
 import cors from "cors"
 
 dotenv.config();
@@ -18,7 +19,8 @@ app.get("/", (req, res) => {
 });
 
 // Routes 
-app.use("/api/v1",Routes)
+app.use("/api/v1",UsersRoutes)
+app.use("api/v1",TaskRoutes)
 
 // Small Mistake dont use semilcolon while creating an environment variablw
 const port = process.env.PORT || 3000;

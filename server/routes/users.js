@@ -3,8 +3,9 @@ import { signin, signup } from "../controllers/users.js"
 
 const route = express.Router()
 
-route.post('/users',signin)
-route.post('/users',signup)
+// Users Authentication
+route.post('/signin',signin)
+route.post('/signup',signup)
 
 export default route;
 

@@ -20,11 +20,11 @@ const Auth = () => {
     console.log(formData);
     try {
       if(isSignUp){
-        const data = await signIn(formData)
+        const data = await signUp(formData)
         console.log(data)
       }
       else{
-        const data = await signUp(formData)
+        const data = await signIn(formData)
         console.log(data)
       }
     } catch (error) {
