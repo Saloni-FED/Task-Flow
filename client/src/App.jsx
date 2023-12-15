@@ -3,6 +3,7 @@ import { createBrowserRouter,Outlet } from "react-router-dom";
 import Error from "./components/Error";
 import Auth from "./components/auth/Auth";
 import Dashboard from "./components/dashboard/Dashboard";
+import Tasks from "./components/auth/posts/Tasks";
 function App() {
   return (
     <>
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <Dashboard/>
+     },
+     {
+      path:'createTask',
+      element: <Tasks/>
      }
     ]
   },

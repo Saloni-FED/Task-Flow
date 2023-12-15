@@ -20,11 +20,11 @@ const Auth = () => {
     console.log(formData);
     try {
       if(isSignUp){
-        const data = await signUp(formData)
+        const { data } = await signUp(formData)
         console.log(data)
       }
       else{
-        const data = await signIn(formData)
+        const { data } = await signIn(formData)
         console.log(data)
       }
     } catch (error) {
@@ -97,8 +97,13 @@ const Auth = () => {
             <p className="text-xs text-red-500 mt-2">{errors.password?.message}</p>{" "}
           </div>
 
-          <button className="border border-l_green w-72 px-2 py-1 text-bold text-2xl mt-5 rounded cursor-pointer">
-            Submit
+          <button className="border border-l_green w-72 px-2 py-1 text-bold text-2xl mt-5 rounded cursor-pointer" 
+          disable={isSubmitting}>
+          {isSubmitting
+                ? "Submitting..."
+                : isSignUp
+                ? "Create Account"
+                : "Sign in"}
           </button>
         </form>
       </div>
