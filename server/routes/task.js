@@ -1,16 +1,13 @@
 import express from "express"
 import {
-  getTask,
-  createTask,
-  updateTask,
-  deleteTask,
+ getAllBySpecificUserTask, updateBySpecificUserTask, deleteBySpecificUserTask, createBySpecificUserTask
 } from "../controllers/tasks.js";
 
 const route = express.Router();
 
-route.get("/:id",getTask)
-route.post("/",createTask)
-route.patch("/:id",updateTask)
-route.delete("/:id",deleteTask)
+route.get("/:id",getAllBySpecificUserTask)
+route.post("/",createBySpecificUserTask)
+route.patch("/:id",updateBySpecificUserTask)
+route.delete("/:id",deleteBySpecificUserTask)
 
 export default route
