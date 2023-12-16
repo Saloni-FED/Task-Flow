@@ -22,7 +22,6 @@ export const signup = async (req, res) => {
         expiresIn: process.env.JWT_EXPIRES,
       }
     );
-
     res.status(200).json({ users: { name: newUsers.name }, token });
   } catch (error) {
     if (error.name === "ValidationError") {

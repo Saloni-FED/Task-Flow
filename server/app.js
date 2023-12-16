@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connect from "./db/connect.js";
 import UsersRoutes from "./routes/users.js"
 import TaskRoutes from "./routes/task.js"
+import auth from "./middleware/auth.js" 
 import cors from "cors"
 
 dotenv.config();
@@ -11,18 +12,19 @@ const app = express();
 // Enable cors 
 app.use(cors())
 
+// Ale to send data in json format
 app.use(express.json())
 
-
+// For testing
 app.get("/", (req, res) => {
   res.send("Server is started");
 });
 
 // Routes 
-app.use("/api/v1",UsersRoutes)
-app.use("api/v1",TaskRoutes)
+app.use("/api/v1", UsersRoutes)
+app.use("/api/v1", auth, TaskRoutes)
 
-// Small Mistake dont use semilcolon while creating an environment variablw
+// Small Mistake dont use semicolon while creating an environment variable
 const port = process.env.PORT || 3000;
 
 const start = async () => {

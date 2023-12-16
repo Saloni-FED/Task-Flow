@@ -6,8 +6,12 @@ import {
 const route = express.Router();
 
 route.get("/:id",getAllBySpecificUserTask)
-route.post("/",createBySpecificUserTask)
+
+route.post("/createTask",createBySpecificUserTask)
+
+
 route.patch("/:id",updateBySpecificUserTask)
+
 route.delete("/:id",deleteBySpecificUserTask)
 
 export default route
