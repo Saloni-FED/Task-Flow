@@ -15,23 +15,22 @@ const Auth = () => {
     setIsSignup((prevState) => !prevState);
   };
 
-  const onSubmit = async(formData) => {
+  const onSubmit = async (formData) => {
     console.log("form submited");
     console.log(formData);
     try {
-      if(isSignUp){
-        const { data } = await signUp(formData)
-        console.log(data)
-      }
-      else{
-        const { data } = await signIn(formData)
-        console.log(data)
+      if (isSignUp) {
+        const { data } = await signUp(formData);
+        const token = data.token;
+        console.log(token);
+      } else {
+        const { data } = await signIn(formData);
+        const token = data.token;
+        console.log(token);
       }
     } catch (error) {
-      console.log(error)
-    } 
-
-    
+      console.log(error);
+    }
   };
   return (
     <div className=" flex flex-col items-center max-sm:mt-56">
@@ -57,7 +56,9 @@ const Auth = () => {
                   },
                 })}
               />
-              <p className="text-xs text-red-500 mt-2">{errors.name?.message}</p>
+              <p className="text-xs text-red-500 mt-2">
+                {errors.name?.message}
+              </p>
             </div>
           )}
           <div className="w-full">
@@ -94,16 +95,20 @@ const Auth = () => {
               })}
               placeholder="password"
             />{" "}
-            <p className="text-xs text-red-500 mt-2">{errors.password?.message}</p>{" "}
+            <p className="text-xs text-red-500 mt-2">
+              {errors.password?.message}
+            </p>{" "}
           </div>
 
-          <button className="border border-l_green w-72 px-2 py-1 text-bold text-2xl mt-5 rounded cursor-pointer" 
-          disable={isSubmitting}>
-          {isSubmitting
-                ? "Submitting..."
-                : isSignUp
-                ? "Create Account"
-                : "Sign in"}
+          <button
+            className="border border-l_green w-72 px-2 py-1 text-bold text-2xl mt-5 rounded cursor-pointer"
+            disable={isSubmitting}
+          >
+            {isSubmitting
+              ? "Submitting..."
+              : isSignUp
+              ? "Create Account"
+              : "Sign in"}
           </button>
         </form>
       </div>
