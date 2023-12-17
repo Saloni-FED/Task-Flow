@@ -2,6 +2,7 @@ import React from "react";
 import { signIn, signUp } from "../../api";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom"
 const Auth = () => {
   const [isSignUp, setIsSignup] = useState(false);
   const {
@@ -23,10 +24,12 @@ const Auth = () => {
         const { data } = await signUp(formData);
         const token = data.token;
         console.log(token);
+        useNavigate("/main")
       } else {
         const { data } = await signIn(formData);
         const token = data.token;
         console.log(token);
+        useNavigate("/main")
       }
     } catch (error) {
       console.log(error);

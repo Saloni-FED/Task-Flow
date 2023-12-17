@@ -1,36 +1,32 @@
 import Header from "./components/Header";
-import { createBrowserRouter,Outlet } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import Error from "./components/Error";
 import Auth from "./components/auth/Auth";
 import Dashboard from "./components/dashboard/Dashboard";
-import Tasks from "./components/auth/posts/Tasks";
+import Tasks from "./components/posts/Tasks";
 function App() {
   return (
     <>
       <Header />
-      <Outlet/>
+      <Outlet />
     </>
   );
 }
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    errorElement: <Error/>,
-    children:[
+    element: <Auth />,
+    errorElement: <Error />,
+  },
+  {
+    path: "/main",
+    element: <Header />,
+    children: [
       {
-         path: 'auth',
-         element: <Auth/>
+        path: "/main/create",
+        element: <Tasks />,
       },
-      {
-        path: 'dashboard',
-        element: <Dashboard/>
-     },
-     {
-      path:'createTask',
-      element: <Tasks/>
-     }
-    ]
+    ],
   },
 ]);
 
