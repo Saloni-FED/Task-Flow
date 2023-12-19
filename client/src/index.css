@@ -24,4 +24,7 @@ body{
   .tasks_input{
     @apply outline-none p-2 text-sm border-b-2 shadow-sm shadow-white rounded bg-custom_black
   }
+  .task_creation{
+    @apply rounded-sm  bg-slate-900 font-body shadow-md shadow-white
+  }
 }

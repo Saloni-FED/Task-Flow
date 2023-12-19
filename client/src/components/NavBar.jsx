@@ -20,9 +20,9 @@ const NavLinks = () => {
         />
       </div>
       {isShow && (
-        <nav className="border w-fit max-sm:w-full max-sm:h-fit h-screen px-24 pt-3 max-sm:p-1 max-sm:px-0 bg-custom_black truncate">
+        <nav className="border w-fit max-sm:w-full max-sm:h-fit  px-24 pt-3 max-sm:p-1 max-sm:px-0 bg-custom_black truncate">
           <ul className="flex flex-col justify-center items-center max-sm:flex-row  max-sm:gap-3 gap-5 text-custom_white font-body font-bold text-sm mt-3">
-            <NavLink to = "/main/create">
+            <NavLink to="/main/create">
               <li className="flex-row max-sm:flex-col max-sm:text-xs max-sm:gap-1 transition-y hover:translate-x-1 max">
                 Create Task
                 <span>
@@ -37,12 +37,15 @@ const NavLinks = () => {
                 <RiDashboard2Fill />
               </span>
             </li>
-            <li className="flex-row max-sm:flex-col max-sm:text-xs max-sm:gap-1 transition-y hover:translate-x-1 ">
-              All Tasks{" "}
-              <span>
-                <FaTasks />
-              </span>
-            </li>
+            <NavLink to = '/main/getalltask'>
+              <li className="flex-row max-sm:flex-col max-sm:text-xs max-sm:gap-1 transition-y hover:translate-x-1 ">
+                All Tasks{" "}
+                <span>
+                  <FaTasks />
+                </span>
+              </li>
+            </NavLink>
+
             <li className="flex-row max-sm:flex-col max-sm:text-xs max-sm:gap-1 transition-y hover:translate-x-1">
               Update Task{" "}
               <span>

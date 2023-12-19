@@ -3,26 +3,30 @@ import Tasks from "../models/tasks.js";
 // Get Task
 export const getAllBySpecificUserTask = async (req, res) => {
   try {
-    const getUser = await Tasks.find({ createdBy : req.user.userId})
-    console.log(getUser)
-    res.status(200).json(getUser)
+    const getUser = await Tasks.find({ createdBy: req.user.userId });
+    console.log(getUser);
+    res.status(200).json(getUser);
   } catch (error) {
-    res.status(500).json({"message": "Unauthorized user"})
+    res.status(500).json({ message: "Unauthorized user" });
   }
-
-
 };
 
 // Create Task
 // Create Task
 export const createBySpecificUserTask = async (req, res) => {
   try {
-    req.body.createdBy = req.user.userId;
-
-    const task = await Tasks.create(req.body);
-    res.status(200).json({ result: task });
+    const { taskName, priority, dueDate } = req.body;
+    const newTask = await Tasks.create({
+      taskName,
+      priority,
+      dueDate,
+      createdBy : req.user.userId
+    })
+    console.log(newTask)
+    res.status(200).json({message:"Task Created"});
   } catch (error) {
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error creating task:", error);
+    res.status(500).json({ message: "Error creating task" });
   }
 };
 

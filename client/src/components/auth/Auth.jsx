@@ -8,7 +8,6 @@ const Auth = () => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors, isSubmitting },
   } = useForm();
 
@@ -24,11 +23,13 @@ const Auth = () => {
         const { data } = await signUp(formData);
         const token = data.token;
         console.log(token);
+        localStorage.setItem('profile',JSON.stringify(token))
         useNavigate("/main")
       } else {
         const { data } = await signIn(formData);
         const token = data.token;
         console.log(token);
+        localStorage.setItem('profile',JSON.stringify(token))
         useNavigate("/main")
       }
     } catch (error) {

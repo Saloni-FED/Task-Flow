@@ -5,7 +5,7 @@ import {
 
 const route = express.Router();
 
-route.get("/:id",getAllBySpecificUserTask)
+route.get("/getalltask",getAllBySpecificUserTask)
 
 route.post("/createTask",createBySpecificUserTask)
 

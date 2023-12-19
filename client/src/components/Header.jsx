@@ -13,7 +13,7 @@ const Header = () => {
             <li className="buttons">Sign in </li>
             <li className="buttons">Sign out</li>
           </ul>
-        </nav>
+        </nav>S
         <div className="flex max-sm:flex-col">
           <NavLinks />
           <Outlet />

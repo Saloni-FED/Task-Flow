@@ -3,7 +3,8 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import Error from "./components/Error";
 import Auth from "./components/auth/Auth";
 import Dashboard from "./components/dashboard/Dashboard";
-import Tasks from "./components/posts/Tasks";
+import Tasks from "./components/task/Tasks";
+import GetAllTask from "./components/task/AllTask";
 function App() {
   return (
     <>
@@ -23,9 +24,13 @@ const router = createBrowserRouter([
     element: <Header />,
     children: [
       {
-        path: "/main/create",
+        path: "create",
         element: <Tasks />,
       },
+      {
+        path:'getalltask',
+        element: <GetAllTask/>
+      }
     ],
   },
 ]);
