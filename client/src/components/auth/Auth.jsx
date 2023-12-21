@@ -23,12 +23,14 @@ const Auth = () => {
         const { data } = await signUp(formData);
         const token = data.token;
         console.log(token);
-        localStorage.setItem('profile',JSON.stringify(token))
         useNavigate("/main")
+        localStorage.setItem('profile',JSON.stringify(token))
+   
       } else {
         const { data } = await signIn(formData);
         const token = data.token;
         console.log(token);
+        useNavigate("/main")
         localStorage.setItem('profile',JSON.stringify(token))
         useNavigate("/main")
       }
