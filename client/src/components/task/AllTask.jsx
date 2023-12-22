@@ -13,13 +13,7 @@ const GetAllTask = () => {
         {allTask.map((taskItems)=>{
           return <AllTaskMain key={taskItems._id}/>
         })}
-        <AllTaskMain/>
-        <AllTaskMain/>
-        <AllTaskMain/>
-        <AllTaskMain/>
-        <AllTaskMain/>
-        <AllTaskMain/>
-        
+      
       </div>
     </>
   );
