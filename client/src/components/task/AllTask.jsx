@@ -11,7 +11,7 @@ const GetAllTask = () => {
     <>
       <div className=" w-screen h-screen bg-custom_black text-white border-custom_white p-3 grid gap-5 grid-cols-3 ">
         {allTask.map((taskItems)=>{
-          return <AllTaskMain key={taskItems._id}/>
+          return <AllTaskMain key={taskItems._id} {...taskItems}/>
         })}
       
       </div>

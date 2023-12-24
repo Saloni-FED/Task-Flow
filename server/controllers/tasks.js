@@ -2,6 +2,7 @@ import Tasks from "../models/tasks.js";
 
 // Get Task
 export const getAllBySpecificUserTask = async (req, res) => {
+  console.log(req.user.userId)
   try {
     const getUser = await Tasks.find({ createdBy: req.user.userId });
     console.log(getUser);
@@ -14,7 +15,9 @@ export const getAllBySpecificUserTask = async (req, res) => {
 // Create Task
 // Create Task
 export const createBySpecificUserTask = async (req, res) => {
+  console.log(req.user.userId)
   try {
+    console.log("Request Recieved", req.body)
     const { taskName, priority, dueDate } = req.body;
     const newTask = await Tasks.create({
       taskName,

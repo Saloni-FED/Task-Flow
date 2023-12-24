@@ -1,21 +1,37 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-const AllTaskMain = () => {
+const AllTaskMain = ({ taskName, date, dueDate, priority, status }) => {
+  const [taskStatus, setTaskStatus] = useState(status === "completed");
+  const [updateTask, setUpdateTask] = useState({
+    pending: status,
+    taskName: taskName,
+    priority: priority,
+  });
+  const[updateButton,setUpdateButton] = useState(false)
+  console.log(updateTask);
+  const buttonRef = useRef(null);
+ 
+  const handlePriority = () => {
+    setTaskStatus((prevStatus) => !prevStatus);
+    const buttonValue = buttonRef.current.textContent;
+    const status = buttonValue.split(" ");
+    console.log(status[status.length - 1]);
+  };
+
   return (
-    <div className="w-fit h-fit p-5 task_creation">
-      <p className="font-bold mt text-2xl text-custom_white">
-        Task is here this is the task
-      </p>
-      <p className="mt-5 text-bold text-l_green">Created At :- 20/10/12 </p>
-      <p className="  text-red-700">Due At :- 20/10/12</p>
-      <select
-        name="task "
+    <div className="flex-grow w-fit h-fit p-5 task_creation">
+      <p className="font-bold mt text-2xl text-custom_white">{taskName}</p>
+      <p className="mt-5 text-bold text-l_green">Created At :- {date}</p>
+      <p className="text-red-700">Due At :- {dueDate}</p>
+      <button
+        ref={buttonRef}
+        name="task"
         id="task"
         className="mt-3 bg-custom_black p-3 outline-none rounded-sm shadow-md shadow-custom_white"
+        onClick={handlePriority}
       >
-        <option value="incomplete">Incomplete</option>
-        <option value="complete">Complete</option>
-      </select>
+        Status:- {taskStatus ? "Completed" : "Pending"}
+      </button>
     </div>
   );
 };

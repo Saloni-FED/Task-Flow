@@ -3,8 +3,10 @@ import { signIn, signUp } from "../../api";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 const Auth = () => {
   const [isSignUp, setIsSignup] = useState(false);
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -22,20 +24,20 @@ const Auth = () => {
       if (isSignUp) {
         const { data } = await signUp(formData);
         const token = data.token;
-        console.log(token);
-        useNavigate("/main")
+        toast.success("Register SuccessFully")
+        navigate("main/create")
         localStorage.setItem('profile',JSON.stringify(token))
    
       } else {
         const { data } = await signIn(formData);
         const token = data.token;
-        console.log(token);
-        useNavigate("/main")
+        toast.success(" Sign in  Successfully")
+        navigate("main/create")
         localStorage.setItem('profile',JSON.stringify(token))
         useNavigate("/main")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error?.response?.data?.message);
     }
   };
   return (
